@@ -184,6 +184,18 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+vim.keymap.set('v', 'p', '"_dP') -- Ensures that while pasting in visual mode, we do not lose the original text we wanted to paste as we move to multiple locations to paste
+
+-- VISUAL MODE --
+-- Moves text up and down
+vim.keymap.set('v', 'J', ":move '>+1<CR>gv-gv")
+vim.keymap.set('v', 'K', ":move '<-2<CR>gv-gv")
+
+-- VISUAL BLOCK --
+-- Moves text up and down
+vim.keymap.set('x', 'J', ":move '>+1<CR>gv-gv")
+vim.keymap.set('x', 'K', ":move '<-2<CR>gv-gv")
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
