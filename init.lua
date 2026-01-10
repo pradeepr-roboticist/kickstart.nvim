@@ -183,7 +183,11 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('i', 'jj', '<Esc>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>qd', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+
+-- Quickfix keymaps
+vim.keymap.set('n', '<leader>qq', ':copen<CR>', { desc = 'Open [Q]uickfix list' })
+vim.keymap.set('n', '<leader>q', ':cclose<CR>', { desc = 'Close [Q]uickfix list' })
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -1006,6 +1010,18 @@ require('lazy').setup({
     'stevearc/overseer.nvim',
     dependencies = {
       'franco-ruggeri/overseer-extra.nvim',
+    },
+    keys = {
+      {
+        '<Leader>t',
+        '<cmd>OverseerRun<CR>',
+        desc = 'Tasks (Overseer)',
+      },
+      {
+        '<Leader>tt',
+        '<cmd>OverseerToggle<CR>',
+        desc = 'Tasks Window (Overseer)',
+      },
     },
     ---@module 'overseer'
     ---@type overseer.SetupOpts
